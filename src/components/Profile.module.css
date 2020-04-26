@@ -1,0 +1,9 @@
+.content {
+    background-color: lightskyblue;
+    grid-area: content;
+    padding: 10px;
+  }
+  
+  .content img {
+    width: 100%;
+  }

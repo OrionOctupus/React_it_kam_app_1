@@ -1,0 +1,20 @@
+.nav {
+    background-color: lightsalmon;
+    grid-area: nav;
+    padding: 10px;
+    text-align: center;
+  }
+
+.nav ul li {
+    list-style: none;
+}  
+
+.link {
+    color: blue;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
