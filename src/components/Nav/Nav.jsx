@@ -5,11 +5,11 @@ function Nav() {
     return (
         <nav className={s.nav}>
             <ul>
-                <li><a className={s.link}>Profile</a></li>
-                <li><a className={s.link}>Messages</a></li>
-                <li><a className={s.link}>News</a></li>
-                <li><a className={s.link}>Music</a></li>
-                <li><a className={s.link}>Settings</a></li>
+                <li><a href="/Profile" className={s.link}>Profile</a></li>
+                <li><a href="/Dialogs" className={s.link}>Messages</a></li>
+                <li><a href="/News" className={s.link}>News</a></li>
+                <li><a href="/Music" className={s.link}>Music</a></li>
+                <li><a href="/Settings" className={s.link}>Settings</a></li>
             </ul>
         </nav>
     );
