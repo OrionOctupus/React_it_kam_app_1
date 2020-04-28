@@ -1,9 +1,3 @@
-.content {
-    background-color: lightskyblue;
-    grid-area: content;
-    padding: 10px;
-  }
-  
-  .wallpic {
-    width: 100%;
-  }
+.wallpic {
+  width: 100%;
+}
