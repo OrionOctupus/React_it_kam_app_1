@@ -3,6 +3,20 @@
     grid-template-columns: 2fr 10fr;
 }
 
+.link {
+    color: green;
+    text-decoration: none;
+}
+
+.link:visited {
+    color:none;
+    text-decoration: none;
+}
+
+.link:focus {
+    outline: none;
+}
+
 .dialogsItems {
     padding: 10px;
 }
