@@ -7,14 +7,24 @@
 
 .nav ul li {
     list-style: none;
+    margin: 3px;
 }  
 
 .link {
     color: blue;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .link:hover {
     color: darkblue;
     text-decoration: underline;
+}
+
+.link:focus {
+    outline: none;
+}
+
+.active {
+    color: lightgreen;
 }
