@@ -6,7 +6,7 @@ function Profile() {
     return (
         <div className={s.content}>
             <div>
-                <img className={s.wallpic} src="https://www.itl.cat/pngfile/big/5-55779_green-nature-dual-monitor-desktop-desktop-images-wallpaper.jpg" />
+                <img className={s.wallpic} src="https://www.itl.cat/pngfile/big/5-55779_green-nature-dual-monitor-desktop-desktop-images-wallpaper.jpg" alt="" />
             </div>
             <div>
                 avatar + info
