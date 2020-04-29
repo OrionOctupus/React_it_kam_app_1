@@ -26,29 +26,33 @@ function Dialogs() {
         { name: "Andrew", id: "1" },
         { name: "Anatoly", id: "2" },
         { name: "Ivan", id: "3" },
+        { name: "Marina", id: "4" },
+        { name: "Pavel", id: "5" },
+        { name: "Lena", id: "6" },
+
     ]
 
     let messagesData = [
         { id: 1, message: "Hello" },
-        { id: 1, message: "How are you?" },
-        { id: 1, message: "Let's meet at the bar?" },
+        { id: 2, message: "How are you?" },
+        { id: 3, message: "Let's meet at the bar?" },
+        { id: 4, message: "Tomorrow at 8 pm" },
+
     ]
+
+    let dialog = dialogData.map((d) => {
+        return <Dialog name={d.name} id={d.id} />;
+    })
+
+    let message = messagesData.map(m => <Message msg={m.message} />)
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <Dialog name={dialogData[0].name} id={dialogData[0].id} />
-                <Dialog name={dialogData[1].name} id={dialogData[1].id} />
-                <Dialog name={dialogData[2].name} id={dialogData[2].id} />
-                <Dialog name="Marina" id="4" />
-                <Dialog name="Pavel" id="5" />
-                <Dialog name="Lena" id="6" />
+                {dialog}
             </div>
             <div className={s.messages}>
-                <Message msg={messagesData[0].message} />
-                <Message msg={messagesData[1].message} />
-                <Message msg={messagesData[2].message} />
-                <Message msg="Tomorrow at 8 pm" />
+                {message}
             </div>
         </div>
     );

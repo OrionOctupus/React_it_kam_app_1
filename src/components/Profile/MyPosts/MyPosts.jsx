@@ -6,8 +6,13 @@ function MyPosts() {
 
     let messagesData = [
         { id: 1, message: "Hello, My Friend!", like: 3 },
-        { id: 1, message: "It's first post", like: 4 },
+        { id: 2, message: "It's first post", like: 4 },
+        { id: 3, message: "It's a good weather today", like: 7 },
+        { id: 4, message: "Good luck!", like: 10 },
     ]
+
+    let message = messagesData
+        .map(m => <Post message={m.message} like={m.like} />)
 
     return (
         <div>
@@ -18,10 +23,7 @@ function MyPosts() {
                 </div>
             </div>
             <div className={s.posts}>
-                <Post message={messagesData[0].message} like={messagesData[0].like} />
-                <Post message={messagesData[1].message} like={messagesData[1].like} />
-                <Post message="It's a good weather today" like="5" />
-                <Post message="Good luck!" like="13" />
+                {message}
             </div>
         </div>
     )
