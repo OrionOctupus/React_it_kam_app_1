@@ -19,5 +19,4 @@
 .app-wrapper__content {
   background-color: lightskyblue;
   grid-area: content;
-  padding: 10px;
 }

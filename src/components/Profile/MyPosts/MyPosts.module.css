@@ -1,4 +1,9 @@
 .posts {
     background-color: cornsilk; 
-    padding: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.postsBlock {
+    padding: 10px;
 }

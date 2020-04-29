@@ -5,9 +5,11 @@ import Post from './Post/Post';
 function MyPosts() {
     return (
         <div>
-            <h4>My post</h4>
-            <div>
-                <button>New Post</button>
+            <div className={s.postsBlock}>
+                <h4>My post</h4>
+                <div>
+                    <button>New Post</button>
+                </div>
             </div>
             <div className={s.posts}>
                 <Post message="Hello, My Friend!" like="3" />
