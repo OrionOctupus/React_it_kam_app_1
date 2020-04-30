@@ -1,0 +1,18 @@
+.link {
+    color: green;
+    text-decoration: none;
+}
+
+.link:visited {
+    color:none;
+    text-decoration: none;
+}
+
+.link:focus {
+    outline: none;
+}
+
+.active {
+    color: darkgoldenrod;
+    font-weight: bold;
+}
