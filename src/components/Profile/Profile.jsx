@@ -4,13 +4,11 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
-
-
-function Profile() {
+function Profile(props) {
     return (
         <div className={s.content}>
             <ProfileInfo />
-            <MyPosts />
+            <MyPosts message={props.message} />
         </div>
     );
 }
