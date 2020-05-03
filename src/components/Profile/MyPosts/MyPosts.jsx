@@ -4,7 +4,7 @@ import Post from './Post/Post';
 
 function MyPosts(props) {
 
-    let message = props.message
+    let message = props.state.profilePage.messagesPost
         .map(m => <Post message={m.message} like={m.like} />)
 
     return (

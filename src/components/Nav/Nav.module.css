@@ -28,3 +28,20 @@
 .active {
     color: lightgreen;
 }
+
+.friendsBlock {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.friends {
+    margin-top: 30px;
+}
+
+.friends h2 {
+
+    color: green;  
+    margin: 0 auto;
+    text-align: center; 
+}
+

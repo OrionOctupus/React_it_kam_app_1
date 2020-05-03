@@ -6,11 +6,17 @@ import s from './Dialogs.module.css';
 
 function Dialogs(props) {
 
-    let dialog = props.dialogsData.map((d) => {
+    let dialog = props.state.dialogsPage.dialogsData.map((d) => {
         return <DialogItem name={d.name} id={d.id} />;
     })
 
-    let message = props.messagesPost.map(m => <Message msg={m.message} />)
+    let message = props.state.dialogsPage.messagesData.map(m => {
+        if (m.id = 1) {
+            return <Message msg={m.message} />;
+        } else {
+            return <Message msg={m.message} />;
+        }
+    });
 
     return (
         <div className={s.dialogs}>
