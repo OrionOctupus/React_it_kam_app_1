@@ -4,7 +4,11 @@ import Post from './Post/Post';
 
 function MyPosts(props) {
     let newPostElement = React.createRef();
-    let newPostMessage = () => alert(newPostElement.current.value);
+    let newPostMessage = () => {
+        debugger;
+        props.addPost(newPostElement.current.value);
+    }
+
 
     let message = props.state.profilePage.messagesPost
         .map(m => <Post message={m.message} like={m.like} />)
