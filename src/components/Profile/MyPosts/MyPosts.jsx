@@ -7,6 +7,7 @@ function MyPosts(props) {
     let newPostMessage = () => {
         debugger;
         props.addPost(newPostElement.current.value);
+        newPostElement.current.value = "";
     }
 
 
