@@ -3,6 +3,8 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 function MyPosts(props) {
+    let newPostElement = React.createRef();
+    let newPostMessage = () => alert(newPostElement.current.value);
 
     let message = props.state.profilePage.messagesPost
         .map(m => <Post message={m.message} like={m.like} />)
@@ -12,7 +14,8 @@ function MyPosts(props) {
             <div className={s.postsBlock}>
                 <h4>My post</h4>
                 <div>
-                    <button>New Post</button>
+                    <textarea ref={newPostElement} ></textarea>
+                    <button onClick={newPostMessage}>New Post</button>
                 </div>
             </div>
             <div className={s.posts}>
