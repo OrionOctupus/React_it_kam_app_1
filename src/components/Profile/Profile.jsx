@@ -8,9 +8,12 @@ function Profile(props) {
     return (
         <div className={s.content}>
             <ProfileInfo />
-            <MyPosts state={props.state} addPost={props.addPost} />
+            <MyPosts state={props.state}
+                addPost={props.addPost}
+                updateNewPostText={props.updateNewPostText}
+            />
         </div>
     );
 }
 
-export default Profile;
+export default Profile; 

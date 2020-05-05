@@ -27,6 +27,7 @@ let state = {
             { id: 3, message: "It's a good weather today", like: 7 },
             { id: 4, message: "Good luck!", like: 10 },
         ],
+        newPostText: '',
     },
 
     navPage: {
@@ -38,13 +39,19 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         like: 0
     };
     state.profilePage.messagesPost.push(newPost);
+    state.profilePage.newPostText = '';
+    reRenderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
     reRenderEntireTree(state);
 }
 
