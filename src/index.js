@@ -11,9 +11,8 @@ import { BrowserRouter } from 'react-router-dom';
 let reRenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={store.getState()}
-                addPost={store.addPost.bind(store)}
-                updateNewPostText={store.updateNewPostText.bind(store)}
+            <App state={state}
+                dispatch={store.dispatch.bind(store)}
             />
         </BrowserRouter>,
         document.getElementById('root')
@@ -23,6 +22,11 @@ let reRenderEntireTree = (state) => {
 reRenderEntireTree(store.getState());
 
 store.subscribe(reRenderEntireTree);
+
+
+
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

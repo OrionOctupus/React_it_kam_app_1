@@ -37,33 +37,49 @@ let store = {
             ]
         }
     },
-
-    getState() {
-        return this._state;
-    },
-
     _callSubscriber() {
         console.log('state update');
     },
 
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            like: 0
-        };
-        this._state.profilePage.messagesPost.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
+    getState() {
+        return this._state;
     },
-
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer; // патерн наблюдатель
+    },
+
+    // addPost() {
+    //     let newPost = {
+    //         id: 5,
+    //         message: this._state.profilePage.newPostText,
+    //         like: 0
+    //     };
+    //     this._state.profilePage.messagesPost.push(newPost);
+    //     this._state.profilePage.newPostText = '';
+    //     this._callSubscriber(this._state);
+    // },
+
+    // updateNewPostText(newText) {
+    //     this._state.profilePage.newPostText = newText;
+    //     this._callSubscriber(this._state);
+    // },
+
+    // -->  action{type:'text'} - объект с описанием действия;
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                like: 0
+            };
+            this._state.profilePage.messagesPost.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 }
 

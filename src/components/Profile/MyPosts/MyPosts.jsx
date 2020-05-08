@@ -6,14 +6,14 @@ function MyPosts(props) {
     let newPostElement = React.createRef();
 
     let addPostMessage = () => {
-        props.addPost();
+        props.dispatch({ type: 'ADD-POST' });
         // props.updateNewPostText('');
         // newPostElement.current.value = "";
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text });
     }
     let message = props.state.profilePage.messagesPost
         .map(m => <Post message={m.message} like={m.like} />)
