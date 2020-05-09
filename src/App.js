@@ -20,7 +20,7 @@ function App(props) {
             state={props.state}
             dispatch={props.dispatch}
           />} />
-          <Route path="/Dialogs" render={() => <Dialogs state={props.state} />} />
+          <Route path="/Dialogs" render={() => <Dialogs store={props.store} />} />
           <Route path="/News" component={News} />
           <Route path="/Music" component={Music} />
           <Route path="/Settings" component={Settings} />
@@ -30,4 +30,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default App; 
