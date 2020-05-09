@@ -7,7 +7,7 @@ import s from './Dialogs.module.css';
 function Dialogs(props) {
 
     let newMessageItem = React.createRef();
-    let newMessage = () => { alert(newMessageItem.current.value) };
+    let onSendMessageClick = () => { alert(newMessageItem.current.value) };
 
     let dialog = props.state.dialogsPage.dialogsData.map((d) => {
         return <DialogItem name={d.name} id={d.id} />;
@@ -28,8 +28,8 @@ function Dialogs(props) {
             </div>
             <div className={s.messages}>
                 {message}
-                <textarea ref={newMessageItem}></textarea>
-                <button onClick={newMessage}>Add messages</button>
+                <textarea placeholder='Enter your messega' ref={newMessageItem}></textarea>
+                <button onClick={onSendMessageClick}>Send messages</button>
             </div>
         </div>
     );
