@@ -5,6 +5,7 @@ import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../r
 
 
 function MyPosts(props) {
+    // debugger;
     let newPostElement = React.createRef();
 
     let addPostMessage = () => {

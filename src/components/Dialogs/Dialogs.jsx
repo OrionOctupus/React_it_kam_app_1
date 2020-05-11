@@ -6,7 +6,7 @@ import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/dia
 
 
 function Dialogs(props) {
-
+    // debugger;
     let state = props.store.getState().dialogsPage;
 
     let dialog = state.dialogsData.map((d) => {

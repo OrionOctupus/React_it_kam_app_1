@@ -1,4 +1,4 @@
-import store from './redux/state';
+import store from './redux/redux-store';
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -22,7 +22,10 @@ let reRenderEntireTree = (state) => {
 
 reRenderEntireTree(store.getState());
 
-store.subscribe(reRenderEntireTree);
+store.subscribe(() => {
+    let state = store.getState();
+    reRenderEntireTree(state);
+});
 
 
 
