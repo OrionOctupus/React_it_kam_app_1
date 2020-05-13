@@ -5,20 +5,24 @@ import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../r
 
 
 function MyPosts(props) {
-    // debugger;
     let newPostElement = React.createRef();
 
     let addPostMessage = () => {
-        props.dispatch(addPostActionCreator());
+        props.addPostMessage();
+
+        // props.dispatch(addPostActionCreator());
         // props.updateNewPostText('');
         // newPostElement.current.value = "";
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
+
+        // props.dispatch(updateNewPostTextActionCreator(text));
     }
-    let message = props.state.profilePage.messagesPost
+
+    let message = props.messagesPost
         .map(m => <Post message={m.message} like={m.like} />)
 
     return (
@@ -26,7 +30,11 @@ function MyPosts(props) {
             <div className={s.postsBlock}>
                 <h4>My post</h4>
                 <div>
-                    <textarea ref={newPostElement} onChange={onPostChange} value={props.state.profilePage.newPostText} />
+                    <textarea
+                        ref={newPostElement}
+                        onChange={onPostChange}
+                        value={props.newPostText}
+                    />
                     <button onClick={addPostMessage}>New Post</button>
                 </div>
             </div>
