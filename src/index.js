@@ -6,19 +6,21 @@ import './index.css';
 import App from './App';
 import { addPost } from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
-import StoreContext from './StoreContext';
+import StoreContext, { Provider } from './StoreContext';
 // import { updateNewPostText } from './redux/state';
 
 let reRenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <StoreContext.Provider value={store}>
+            <Provider store={store}>
+                {/* <StoreContext.Provider value={store}> */}
                 <App
                 // state={state}
                 // dispatch={store.dispatch.bind(store)}
                 // store={store}
                 />
-            </StoreContext.Provider>
+                {/* </StoreContext.Provider> */}
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );
