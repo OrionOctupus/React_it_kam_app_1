@@ -4,22 +4,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { addPost } from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
-import StoreContext, { Provider } from './StoreContext';
-// import { updateNewPostText } from './redux/state';
+import { Provider } from 'react-redux';
 
 let reRenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
-                {/* <StoreContext.Provider value={store}> */}
-                <App
-                // state={state}
-                // dispatch={store.dispatch.bind(store)}
-                // store={store}
-                />
-                {/* </StoreContext.Provider> */}
+                <App />
             </Provider>
         </BrowserRouter>,
         document.getElementById('root')
