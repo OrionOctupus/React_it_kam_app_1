@@ -14,15 +14,18 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Nav store={props.store} />
+        <Nav
+        // store={props.store}
+        />
         <div className="app-wrapper__content">
           <Route path="/Profile"
             render={() => <Profile
-              store={props.store}
+            // store={props.store}
             />} />
           <Route path="/Dialogs"
             render={() => <DialogsContainer
-              store={props.store} />} />
+            // store={props.store} 
+            />} />
           <Route path="/News" component={News} />
           <Route path="/Music" component={Music} />
           <Route path="/Settings" component={Settings} />
