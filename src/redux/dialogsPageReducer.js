@@ -12,25 +12,39 @@ let initialState = {
     ],
 
     messagesData: [
-        { id: 2, message: "Hello" },
+        { id: 1, message: "Hello" },
         { id: 2, message: "How are you?" },
-        { id: 1, message: "i'm fine thanks" },
-        { id: 2, message: "Let's meet at the bar?" },
-        { id: 2, message: "Tomorrow at 8 pm" },
+        { id: 3, message: "i'm fine thanks" },
+        { id: 4, message: "Let's meet at the bar?" },
+        { id: 5, message: "Tomorrow at 8 pm" },
     ],
     newMessageBody: " ",
 };
 
 const dialogsPageReducer = (state = initialState, action) => {
-
     if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-        state.newMessageBody = action.body;
+        return {
+            ...state,
+            newMessageBody: action.body
+        }
+        // stateCopy.newMessageBody = action.body;
+        // state.newMessageBody = action.body;
     } else if (action.type === SEND_MESSAGE) {
         let body = state.newMessageBody;
-        state.newMessageBody = " ";
-        state.messagesData.push({ id: 6, message: body });
+        return {
+            ...state,
+            newMessageBody: "",
+            messagesData: [...state.messagesData, { id: 6, message: body }]
+        }
+        // let body = stateCopy.newMessageBody;
+        // let body = state.newMessageBody;
+        // stateCopy.newMessageBody = "";
+        // state.newMessageBody = " ";
+        // stateCopy.messagesData.push({ id: 6, message: body });
+        // state.messagesData.push({ id: 6, message: body });
     }
 
+    // return stateCopy;
     return state;
 }
 

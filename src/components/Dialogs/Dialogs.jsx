@@ -9,11 +9,11 @@ function Dialogs(props) {
     let state = props.dialogsPage;
 
     let dialog = state.dialogsData.map((d) => {
-        return <DialogItem name={d.name} id={d.id} />;
+        return <DialogItem name={d.name} key={d.id} id={d.id} />;
     });
 
     let message = state.messagesData.map(m => {
-        return <Message msg={m.message} />;
+        return <Message msg={m.message} key={m.id} />;
     });
 
     let newMessageBody = state.newMessageBody;
