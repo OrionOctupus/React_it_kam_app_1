@@ -1,10 +1,47 @@
 import React from 'react';
+import s from './Users.module.css';
 
 
 function Users(props) {
+
+    if (props.users.length === 0) {
+        props.setUsers([
+            { id: 1, followed: false, fullName: "Eugene", status: 'I am learn React&Redux', location: { city: 'Moscow', country: 'Russia' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
+            { id: 2, followed: true, fullName: "Elena", status: 'I am learn React&Redux', location: { city: 'Kiev', country: 'Ukrane' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
+            { id: 3, followed: false, fullName: "Pavel", status: 'I am learn React&Redux', location: { city: 'Minsk', country: 'Belarus' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
+            { id: 4, followed: true, fullName: "Victor", status: 'I am learn React&Redux', location: { city: 'Omsk', country: 'Russia' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
+        ]);
+    }
+
     return (
         <div>
-            Users Page
+            {
+                props.users.map(u => {
+                    return (
+                        <div key={u.id}>
+                            <span>
+                                <div>
+                                    <img className={s.usersPhoto} src={u.photoUrl} />
+                                </div>
+                                <div>
+                                    {u.followed
+                                        ? <button onClick={() => { props.unfollow(u.id) }}>unfollow</button>
+                                        : <button onClick={() => { props.follow(u.id) }}>follow</button>}
+                                </div>
+                            </span>
+                            <span>
+                                <span>
+                                    <div>{u.fullName}</div><div>{u.status}</div>
+                                </span>
+                                <span>
+                                    <div>{u.location.country}</div>
+                                    <div>{u.location.city}</div>
+                                </span>
+                            </span>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 };
