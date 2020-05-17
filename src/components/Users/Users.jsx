@@ -5,12 +5,15 @@ import userAvatarDefault from '../../../src/assets/images/userAvatarDefault.png'
 
 
 function Users(props) {
-    if (props.users.length === 0) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => {
-                props.setUsers(response.data.items);
-            })
+    function getUsers() {
+        if (props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    props.setUsers(response.data.items);
+                })
+        }
     }
+
     // if (props.users.length === 0) {
     //     props.setUsers([
     //         { id: 1, followed: false, fullName: "Eugene", status: 'I am learn React&Redux', location: { city: 'Moscow', country: 'Russia' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
@@ -22,6 +25,7 @@ function Users(props) {
 
     return (
         <div>
+            <button onClick={getUsers}>Get Users</button>
             {
                 props.users.map(u => {
                     return (
