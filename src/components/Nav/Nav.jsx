@@ -14,6 +14,7 @@ function Nav(props) {
                 <li><NavLink to="/News" activeClassName={s.active} className={s.link}>News</NavLink></li>
                 <li><NavLink to="/Music" activeClassName={s.active} className={s.link}>Music</NavLink></li>
                 <li><NavLink to="/Settings" activeClassName={s.active} className={s.link}>Settings</NavLink></li>
+                <li><NavLink to="/Users" activeClassName={s.active} className={s.link}>Users</NavLink></li>
             </ul>
             {/* <div className={s.friends}>
                 <h2>Friends</h2>
