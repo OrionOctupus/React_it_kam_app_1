@@ -3,3 +3,16 @@
     height: 60px;
     border-radius: 50%;
 }
+
+
+.selectedPage {
+    font-weight: bold;
+}
+
+.pagination {
+    cursor: pointer;
+}
+
+.pagination span {
+    margin-left: 5px;
+}

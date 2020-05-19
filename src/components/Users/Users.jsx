@@ -11,32 +11,51 @@ class Users extends React.Component {
     // }
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
+            })
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsers(response.data.items);
             })
     }
 
-    // getUsers = () => {
-    //     if (this.props.users.length === 0) {
-    //         axios.get("https://social-network.samuraijs.com/api/1.0/users")
-    //             .then(response => {
-    //                 this.props.setUsers(response.data.items);
-    //             })
-    //     }
-    // }
-
     render() {
+        debugger;
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        };
+
         return (
             <div>
-                <button onClick={this.getUsers}>Get Users</button>
+                <div className={s.pagination}>
+                    {pages.map(p => {
+                        return (
+                            <span
+                                className={this.props.currentPage === p && s.selectedPage}
+                                onClick={(e) => { this.onPageChanged(p) }}
+                            >{p}</span>
+                        )
+                    })}
+
+                </div>
+                {/* <button onClick={this.getUsers}>Get Users</button> */}
                 {
                     this.props.users.map(u => {
                         return (
                             <div key={u.id}>
                                 <span>
                                     <div>
-                                        <img className={s.usersPhoto} src={u.photos.small != null ? u.photos.small : userAvatarDefault} />
+                                        <img className={s.usersPhoto} src={u.photos.small != null ? u.photos.small : userAvatarDefault} alt="logo Default" />
                                     </div>
                                     <div>
                                         {u.followed
@@ -61,6 +80,18 @@ class Users extends React.Component {
         )
     }
 }
+
+
+// getUsers = () => {
+//     if (this.props.users.length === 0) {
+//         axios.get("https://social-network.samuraijs.com/api/1.0/users")
+//             .then(response => {
+//                 this.props.setUsers(response.data.items);
+//             })
+//     }
+// }
+
+
 
 // function Users(props) {
 //     function getUsers() {

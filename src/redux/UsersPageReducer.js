@@ -1,6 +1,8 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 
 let initialState = {
     users: [
@@ -8,7 +10,10 @@ let initialState = {
         // { id: 2, followed: true, fullName: "Elena", status: 'I am learn React&Redux', location: { city: 'Kiev', country: 'Ukrane' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
         // { id: 3, followed: false, fullName: "Pavel", status: 'I am learn React&Redux', location: { city: 'Minsk', country: 'Belarus' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
         // { id: 4, followed: true, fullName: "Victor", status: 'I am learn React&Redux', location: { city: 'Omsk', country: 'Russia' }, photoUrl: 'https://assets.vg247.com/current//2014/11/human_element_nov_14.jpg' },
-    ]
+    ],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -34,9 +39,14 @@ const usersPageReducer = (state = initialState, action) => {
                 })
             }
         case SET_USERS: {
-            return { ...state, users: [...state.users, ...action.users] }
+            return { ...state, users: action.users }
         }
-
+        case SET_CURRENT_PAGE: {
+            return { ...state, currentPage: action.currentPage }
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return { ...state, totalUsersCount: action.totalCount }
+        }
         default:
             return state;
 
@@ -46,5 +56,7 @@ const usersPageReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setTotalUsersCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount: totalUsersCount });
 
 export default usersPageReducer;
