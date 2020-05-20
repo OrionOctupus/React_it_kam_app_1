@@ -12,6 +12,7 @@ function Users(props) {
 
     return (
         <div>
+
             <div className={s.pagination}>
                 {pages.map(p => {
                     return (
