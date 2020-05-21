@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Users.module.css';
 import userAvatarDefault from '../../../src/assets/images/userAvatarDefault.png';
+import { NavLink } from 'react-router-dom';
+
 
 function Users(props) {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -12,7 +14,6 @@ function Users(props) {
 
     return (
         <div>
-
             <div className={s.pagination}>
                 {pages.map(p => {
                     return (
@@ -31,7 +32,9 @@ function Users(props) {
                         <div key={u.id}>
                             <span>
                                 <div>
-                                    <img className={s.usersPhoto} src={u.photos.small != null ? u.photos.small : userAvatarDefault} alt="logo Default" />
+                                    <NavLink to={'/profile/' + u.id}>
+                                        <img className={s.usersPhoto} src={u.photos.small != null ? u.photos.small : userAvatarDefault} alt="logo Default" />
+                                    </NavLink>
                                 </div>
                                 <div>
                                     {u.followed
