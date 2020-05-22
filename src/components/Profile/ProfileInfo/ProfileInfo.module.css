@@ -5,3 +5,17 @@
   .description {
       padding: 10px;
   }
+
+h4 {
+    font-size: 20px;
+    /* color: orange */
+}
+
+i {
+    color: green;
+    font-size: 20px;
+}
+
+a{
+    margin-right: 10px;
+}

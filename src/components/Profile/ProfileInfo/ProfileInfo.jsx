@@ -12,8 +12,14 @@ function ProfileInfo(props) {
                 <img className={s.wallpic} src="https://www.itl.cat/pngfile/big/5-55779_green-nature-dual-monitor-desktop-desktop-images-wallpaper.jpg" alt="" />
             </div>
             <div className={s.description}>
+                <h4>{props.profile.fullName}</h4>
                 <img src={props.profile.photos.large} alt="" />
-                avatar + info
+                <p><i>{props.profile.aboutMe}</i></p>
+                <p>Работа: {props.profile.lookingForAJobDescription}</p>
+
+                <a target='_blank' href={props.profile.contacts.facebook}> Facebook </a>
+                <a target='_blank' href={props.profile.contacts.vk}> VK </a>
+                <a target='_blank' href={props.profile.contacts.twitter}> Twitter </a>
             </div>
         </div>
     )

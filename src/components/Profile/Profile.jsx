@@ -10,7 +10,6 @@ function Profile(props) {
         <div className={s.content}>
             <ProfileInfo profile={props.profile} />
             <MyPostsContainer
-            // store={props.store}
             />
         </div>
     );
