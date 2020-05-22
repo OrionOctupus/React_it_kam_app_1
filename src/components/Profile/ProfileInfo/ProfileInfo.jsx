@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 
 function ProfileInfo(props) {
+    // если нет никакого профиля показывается прелоадер
     if (!props.profile) {
         return <Preloader />
     }

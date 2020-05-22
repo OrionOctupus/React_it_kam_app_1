@@ -19,13 +19,11 @@ function App(props) {
         // store={props.store}
         />
         <div className="app-wrapper__content">
-          <Route path="/Profile"
+          <Route path="/Profile/:userId?"
             render={() => <ProfileContainer
-            // store={props.store}
             />} />
           <Route path="/Dialogs"
             render={() => <DialogsContainer
-            // store={props.store} 
             />} />
           <Route path="/Users"
             render={() =>
