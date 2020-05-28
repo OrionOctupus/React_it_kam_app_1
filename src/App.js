@@ -16,20 +16,11 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wrapper">
         <HeaderContainer />
-        <Nav
-        // store={props.store}
-        />
+        <Nav />
         <div className="app-wrapper__content">
-          <Route path="/Profile/:userId?"
-            render={() => <ProfileContainer
-            />} />
-          <Route path="/Dialogs"
-            render={() => <DialogsContainer
-            />} />
-          <Route path="/Users"
-            render={() =>
-              <UsersContainer />
-            } />
+          <Route path="/Profile/:userId?" render={() => <ProfileContainer />} />
+          <Route path="/Dialogs" render={() => <DialogsContainer />} />
+          <Route path="/Users" render={() => <UsersContainer />} />
           <Route path="/News" component={News} />
           <Route path="/Music" component={Music} />
           <Route path="/Settings" component={Settings} />
