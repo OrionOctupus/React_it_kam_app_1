@@ -39,32 +39,31 @@ function Users(props) {
                                 </div>
                                 <div>
                                     {u.followed
-                                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                            props.toggleFollowingProgress(true, u.id);
-                                            console.log('REQUEST');
-                                            userAPI.setUnfolower(u.id)
-                                                .then(response => {
-                                                    if (response.data.resultCode === 0) {
-                                                        props.unfollow(u.id);
-                                                    }
-                                                    console.log(response);
-                                                    props.toggleFollowingProgress(false, u.id);
-                                                });
-                                        }}>unfollow</button>
+                                        ? <button
+                                            disabled={props.followingInProgress.some(id => id === u.id)}
+                                            onClick={() => {
 
-                                        : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                            props.toggleFollowingProgress(true, u.id);
-                                            console.log('REQUEST');
-                                            userAPI.setFolower(u.id)
-                                                .then(response => {
-                                                    if (response.data.resultCode === 0) {
-                                                        props.follow(u.id);
-                                                    }
-                                                    console.log(response);
-                                                    console.log('Response!!!');
-                                                    props.toggleFollowingProgress(false, u.id);
-                                                });
-                                        }}>follow</button>}
+                                                // СТАЛО с thunk
+                                                props.unfollow(u.id)
+
+                                                // БЫЛО без thunk
+                                                // props.toggleFollowingProgress(true, u.id);
+                                                // console.log('REQUEST');
+                                                // userAPI.setUnfolower(u.id)
+                                                //     .then(response => {
+                                                //         if (response.data.resultCode === 0) {
+                                                //             props.unfollow(u.id);
+                                                //         }
+                                                //         console.log(response);
+                                                //         props.toggleFollowingProgress(false, u.id);
+                                                //     });
+                                            }}>unfollow</button>
+
+                                        : <button
+                                            disabled={props.followingInProgress.some(id => id === u.id)}
+                                            onClick={() => { props.follow(u.id) }}>
+                                            follow
+                                        </button>}
                                 </div>
                             </span>
                             <span>

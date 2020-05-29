@@ -68,15 +68,20 @@ const usersPageReducer = (state = initialState, action) => {
     }
 }
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+// export const follow = (userId) => ({ type: FOLLOW, userId });
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+
+// export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
+
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount: totalUsersCount });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleFollowingProgress = (inProgress, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, inProgress, userId });
 
-// thunk!!! 
+
+// thunkS !!! 
 
 export const getUsersThunkCreator = (currentPage, pageSize) => {
     return (dispatch) => {
@@ -90,5 +95,39 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
         });
     }
 }
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        console.log('REQUEST');
+        userAPI.setUnfolower(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollowSuccess(userId));
+                }
+                console.log(response);
+                console.log('Response!unfollow!!');
+
+                dispatch(toggleFollowingProgress(false, userId));
+            });
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        console.log('REQUEST');
+        userAPI.setFolower(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followSuccess(userId));
+                }
+                console.log(response);
+                console.log('Response!!!');
+                dispatch(toggleFollowingProgress(false, userId));
+            });
+    }
+}
+
 
 export default usersPageReducer;

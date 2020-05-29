@@ -26,12 +26,9 @@ class UsersContainer extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
+        // заменяем все на thunk
         this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true);
-        userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-        })
+        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
     }
 
     // onPageChanged = (pageNumber) => {
@@ -54,7 +51,8 @@ class UsersContainer extends React.Component {
                 users={this.props.users}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
-                toggleFollowingProgress={this.props.toggleFollowingProgress}
+                // не нужно т.к появились thunk
+                // toggleFollowingProgress={this.props.toggleFollowingProgress}
                 followingInProgress={this.props.followingInProgress}
             />
         </>
@@ -72,14 +70,24 @@ function mapStateToProps(state) {
     }
 };
 
+// СТАЛО после введения thunk 
 export default connect(mapStateToProps,
     {
-        follow, unfollow, setUsers,
-        setCurrentPage, setTotalUsersCount, toggleIsFetching,
-        toggleFollowingProgress, getUsersThunkCreator,
+        follow, unfollow, setCurrentPage,
+        toggleFollowingProgress,
+        getUsersThunkCreator,
     }
 )(UsersContainer);
 
+// БЫЛО до введения thunk
+
+// export default connect(mapStateToProps,
+//     {
+//         follow, unfollow, setUsers,
+//         setCurrentPage, setTotalUsersCount, toggleIsFetching,
+//         toggleFollowingProgress, getUsersThunkCreator,
+//     }
+// )(UsersContainer);
 
 // сокращаем функцию  до короткой записи для передачи в connect()();
 // function mapDispatchToProps(dispatch) {
